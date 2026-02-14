@@ -1,3 +1,34 @@
+/* 主题变量 */
+:root.light-theme {
+    --bg-color: #f5f5f5;
+    --text-color: #333;
+    --card-bg: white;
+    --header-bg: #fff;
+    --border-color: #ddd;
+    --hover-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --price-color: #e74c3c;
+    --header-color: #2c3e50;
+    --modal-bg: white;
+    --modal-text: #333;
+}
+
+:root.dark-theme {
+    --bg-color: #2c3e50;
+    --text-color: #ecf0f1;
+    --card-bg: #34495e;
+    --header-bg: #2c3e50;
+    --border-color: #7f8c8d;
+    --hover-shadow: 0 8px 16px rgba(0,0,0,0.4);
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --price-color: #e74c3c;
+    --header-color: #ecf0f1;
+    --modal-bg: #34495e;
+    --modal-text: #ecf0f1;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -6,8 +37,9 @@
 
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f5f5f5;
-    color: #333;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
@@ -22,19 +54,28 @@ header {
     align-items: center;
     padding: 20px 0;
     margin-bottom: 30px;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid var(--border-color);
+    background-color: var(--header-bg);
 }
 
 header h1 {
-    color: #2c3e50;
+    color: var(--header-color);
     font-size: 2.5em;
 }
 
-.cart-info {
-    display: flex;
-    gap: 20px;
-    font-size: 1.2em;
-    font-weight: bold;
+.theme-toggle {
+    background-color: var(--button-bg);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-hover);
 }
 
 .product-grid {
@@ -44,7 +85,7 @@ header h1 {
 }
 
 .product-card {
-    background: white;
+    background: var(--card-bg);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
     padding: 20px;
@@ -55,7 +96,7 @@ header h1 {
 
 .product-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    box-shadow: var(--hover-shadow);
 }
 
 .product-image {
@@ -80,30 +121,68 @@ header h1 {
     font-size: 1.2em;
     font-weight: bold;
     margin-bottom: 10px;
-    color: #2c3e50;
+    color: var(--header-color);
 }
 
 .product-price {
     font-size: 1.3em;
-    color: #e74c3c;
+    color: var(--price-color);
     font-weight: bold;
     margin-bottom: 15px;
 }
 
-.add-to-cart-btn {
-    background-color: #3498db;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 1em;
-    transition: background-color 0.3s;
+/* 模态框样式 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
     width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
 }
 
-.add-to-cart-btn:hover {
-    background-color: #2980b9;
+.modal-content {
+    background-color: var(--modal-bg);
+    margin: 10% auto;
+    padding: 20px;
+    border: none;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    position: relative;
+    color: var(--modal-text);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.close {
+    position: absolute;
+    right: 15px;
+    top: 10px;
+    color: #aaa;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+}
+
+.modal-price {
+    font-size: 1.5em;
+    color: var(--price-color);
+    font-weight: bold;
+    margin: 15px 0;
+}
+
+.modal-description {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-top: 15px;
 }
 
 @media (max-width: 1200px) {
@@ -122,9 +201,13 @@ header h1 {
     .product-grid {
         grid-template-columns: 1fr;
     }
-    
+
     header {
         flex-direction: column;
         gap: 10px;
+    }
+    
+    .theme-toggle {
+        align-self: flex-end;
     }
 }

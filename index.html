@@ -10,10 +10,7 @@
     <div class="container">
         <header>
             <h1>高级购物商城</h1>
-            <div class="cart-info">
-                <span id="cart-count">购物车: 0</span>
-                <span id="total-price">总计: ¥0.00</span>
-            </div>
+            <button id="theme-toggle" class="theme-toggle">切换主题</button>
         </header>
         
         <main>
@@ -23,6 +20,16 @@
         </main>
     </div>
     
+    <!-- 商品详情模态框 -->
+    <div id="product-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modal-product-name"></h2>
+            <p class="modal-price" id="modal-product-price"></p>
+            <p class="modal-description" id="modal-product-description"></p>
+        </div>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>
