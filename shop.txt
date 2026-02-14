@@ -1,0 +1,8 @@
+iPhone 13,5999
+MacBook Pro,12999
+iPad Air,4399
+Apple Watch,2999
+AirPods Pro,1999
+Samsung Galaxy,4999
+Dell XPS,8999
+Sony WH-1000XM4,2299
